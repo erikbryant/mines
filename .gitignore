@@ -1,0 +1,7 @@
+a.out
+*.[oa]
+*.h.gch
+.*.swp
+.DS_Store
+perf.data*
+*~
