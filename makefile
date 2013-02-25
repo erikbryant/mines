@@ -1,6 +1,7 @@
 CC       = g++ -Wall -Werror -O3
 C11      = -std=c++11
 
+.PHONY: all
 all: mines
 
 .PHONY: clean
