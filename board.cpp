@@ -1,4 +1,9 @@
 //
+// Copyright Erik Bryant (erikbryantology@gmail.com)
+// GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
+//
+
+//
 // TODO:
 // * Make a board iterator that walks all cells
 // ** Give it flags to ignore non-cells

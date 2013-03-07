@@ -1,3 +1,8 @@
+//
+// Copyright Erik Bryant (erikbryantology@gmail.com)
+// GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
+//
+
 #define CAP_NONE     0
 #define CAP_BLANK    1
 #define CAP_FLAG     2
