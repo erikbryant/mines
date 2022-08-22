@@ -1,6 +1,5 @@
 //
 // Copyright Erik Bryant (erikbryantology@gmail.com)
-// GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
 //
 
 #include <vector>
@@ -11,8 +10,6 @@
 #define LEVEL_EASY   0
 #define LEVEL_MEDIUM 1
 #define LEVEL_HARD   2
-
-#define ARRAY
 
 class Board {
 
@@ -27,13 +24,8 @@ class Board {
     int           cols;
     unsigned int  difficulty;
     int           mines[3];
-    int           flags;
     bool          initialized;
-#ifdef ARRAY
     Cell          **cells;
-#else
-    vector< Cell > *cells;
-#endif
     int           curR;
     int           curC;
 
@@ -45,7 +37,7 @@ class Board {
 
     ~Board();
 
-    void readFile( char *filename );
+    void readFile( string filename );
 
     void startNewGame();
 
@@ -104,4 +96,3 @@ class Board {
 
     void fillCellsHelper( int r, int c, unsigned int color, bool mirror );
 };
-

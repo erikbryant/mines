@@ -1,6 +1,5 @@
 //
 // Copyright Erik Bryant (erikbryantology@gmail.com)
-// GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
 //
 
 //
@@ -60,7 +59,7 @@ Board::~Board()
   deinit();
 }
 
-void Board::readFile( char *filename )
+void Board::readFile( string filename )
 {
   if ( initialized ) {
     deinit();
@@ -81,12 +80,13 @@ void Board::readFile( char *filename )
   // TODO: Replace the hardcoded array
   // with something expandable. Vector?
   //
-#ifdef ARRAY
   rows = 0;
   cells = new Cell*[999];
   while ( 1 ) {
     boardFile >> rowBuff;
-    if ( boardFile.eof() ) { break; }
+    if ( boardFile.eof() ) {
+       break;
+    }
     cols = strlen( rowBuff );
     cells[rows] = new Cell[cols];
     for ( int c=0; c<cols; c++ ) {
@@ -99,28 +99,9 @@ void Board::readFile( char *filename )
 
     rows++;
   }
-#else
-  rows = 0;
-  cells = new vector< Cell >*[999];
-  while ( 1 ) {
-    boardFile >> rowBuff;
-    if ( boardFile.eof() ) { break; }
-    cols = strlen( rowBuff );
-    cells[rows] = new vector< Cell >(cols);
-    for ( int c=0; c<cols; c++ ) {
-      if ( rowBuff[c] == '0' ) {
-        cells[rows][c].setCell( 0, 0 );
-      } else {
-        cells[rows][c].setCell( 1, rowBuff[c] - '0' );
-      }
-    }
-
-    rows++;
-  }
-#endif
 
   boardFile.close();
-  delete rowBuff;
+  delete[] rowBuff;
 
   initialized = 1;
 }
@@ -686,4 +667,3 @@ void Board::replaceColor( unsigned int oldColor, unsigned int newColor )
     }
   }
 }
-

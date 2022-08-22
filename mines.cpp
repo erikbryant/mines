@@ -1,6 +1,5 @@
 //
 // Copyright Erik Bryant (erikbryantology@gmail.com)
-// GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
 //
 
 #include <iostream>
@@ -30,32 +29,32 @@ char readkbd( void ) {
   tcsetattr( STDIN_FILENO, TCSANOW, &newt );
   ch = getchar();
   tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
-  
+
   return ch;
 }
 
 int main( int argc, char **argv ) {
   bool done = 0;
 
-#if 0
+#ifdef TEST_COLORS
   cout << "Size of Cell: " << sizeof( Cell ) << endl;
   cout << "/" << char(27) << "[1m" << "1 bold text" << char(27) << "[0m" << "/" << endl;
   cout << "/" << char(27) << "[2m" << "2 light text" << char(27) << "[0m" << "/" << endl;
   cout << "/" << char(27) << "[3m" << "3 normal text" << char(27) << "[0m" << "/" << endl;
   cout << "/" << char(27) << "[4m" << "4 underline text" << char(27) << "[0m" << "/" << endl;
-  cout << "/" << char(27) << "[5m" << "5 normal text" << char(27) << "[0m" << "/" << endl;
+  cout << "/" << char(27) << "[5m" << "5 blink text" << char(27) << "[0m" << "/" << endl;
   cout << "/" << char(27) << "[6m" << "6 normal text" << char(27) << "[0m" << "/" << endl;
   cout << "/" << char(27) << "[7m" << "7 inverse text" << char(27) << "[0m" << "/" << endl;
-  cout << "/" << char(27) << "[8m" << "8 white on white text" << char(27) << "[0m" << "/" << endl;
-  cout << "/" << char(27) << "[34m" << "34 blue on white text" << char(27) << "[0m" << "/" << endl;
-  cout << "/" << char(27) << "[35m" << "35 purple on white text" << char(27) << "[0m" << "/" << endl;
-  cout << "/" << char(27) << "[40m" << "40 black on black text" << char(27) << "[0m" << "/" << endl;
-  cout << "/" << char(27) << "[41m" << "41 black on red text" << char(27) << "[0m" << "/" << endl;
+  cout << "/" << char(27) << "[8m" << "8 black on black text" << char(27) << "[0m" << "/" << endl;
+  cout << "/" << char(27) << "[34m" << "34 blue on black text" << char(27) << "[0m" << "/" << endl;
+  cout << "/" << char(27) << "[35m" << "35 purple on black text" << char(27) << "[0m" << "/" << endl;
+  cout << "/" << char(27) << "[40m" << "40 white on black text" << char(27) << "[0m" << "/" << endl;
+  cout << "/" << char(27) << "[41m" << "41 white on red text" << char(27) << "[0m" << "/" << endl;
 #endif
 
   while ( !done ) {
     Board b;
-    char boardName[255];
+    string boardName;
     bool useColor = false;
     bool gameOver = false;
     bool editMode = false;
@@ -65,7 +64,7 @@ int main( int argc, char **argv ) {
     system( "ls boards" );
     cout << "Board name: ";
     cin >> boardName;
-    b.readFile( boardName );
+    b.readFile( "boards/" + boardName );
 
     unsigned int difficulty;
     do {

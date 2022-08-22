@@ -1,6 +1,5 @@
 //
 // Copyright Erik Bryant (erikbryantology@gmail.com)
-// GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
 //
 
 #include <iostream>
@@ -30,7 +29,7 @@ char readkbd( void ) {
   tcsetattr( STDIN_FILENO, TCSANOW, &newt );
   ch = getchar();
   tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
-  
+
   return ch;
 }
 
