@@ -94,10 +94,12 @@ int main( int argc, char **argv ) {
         case '7':
         case '8':
         case '9':
-          b.setCell( op - '0' );
+          // TODO: What should mirror be? Using 'false' for now.
+          b.setCell( op - '0', false );
           break;
         case ' ':
-          b.setCell( 0 );
+          // TODO: What should mirror be? Using 'false' for now.
+          b.setCell( 0, false );
           break;
         case 'c':
           useColor = !useColor;
